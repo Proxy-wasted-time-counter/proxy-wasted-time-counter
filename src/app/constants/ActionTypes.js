@@ -1,0 +1,2 @@
+
+export const ADD_WASTED_TIME = 'ADD_WASTED_TIME';
