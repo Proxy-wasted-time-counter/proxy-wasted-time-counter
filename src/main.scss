@@ -1,73 +1,20 @@
-@import "mui";
+@import 'bulma/utilities/utilities';
+@import 'bulma/config/variables';
+
+// Override variables here
+// You can add new ones or update existing ones:
+
+
+@import 'bulma/config/generated-variables';
+
+
+// Override generated variables here
+// For example, by default, the $danger color is $red and the font is sans-serif
+// You can change these values:
+
+@import 'bulma/base/base';
+@import 'bulma/elements/elements';
+@import 'bulma/components/components';
+@import 'bulma/layout/layout';
 
 $default-background-color: #fff;
-
-html, body, #app-container, app {
-  height: 100vh;
-  background-color: $default-background-color;
-}
-
-app {
-  display: block;
-  /**
-   * Layout CSS
-   */
-  #header {
-     position: fixed;
-     top: 0;
-     right: 0;
-     left: 0;
-     z-index: 2;
-     transition: left 0.2s;
-   }
-
-   #content-wrapper {
-     min-height: 100%;
-     overflow-x: hidden;
-     margin-left: 0px;
-     transition: margin-left 0.2s;
-
-     /* sticky bottom */
-     margin-bottom: -151px;
-     padding-bottom: 151px;
-
-     h1 {
-      text-align: center;
-     }
-   }
-
-   #footer {
-     height: 95px;
-     margin-left: 0px;
-     transition: margin-left 0.2s;
-   }
-
-   @media (min-width: 768px) {
-     #header {
-       transition: left 0.2s;
-     }
-
-     #content-wrapper {
-       transition: margin-left 0.2s;
-     }
-
-    #footer {
-      transition: margin-left 0.2s;
-    }
-  }
-
-  /**
-   * Footer CSS
-   */
-
-  #footer {
-    background-color: #0288D1;
-    color: #fff;
-  }
-
-  #footer a {
-    color: #fff;
-    text-decoration: underline;
-  }
-
-}

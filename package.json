@@ -5,9 +5,10 @@
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "bluebird": "^3.1.1",
+    "bulma": "0.0.16",
     "classnames": "^2.2.3",
-    "muicss": "^0.2.9",
-    "multithread-it": "0.0.5"
+    "multithread-it": "0.0.5",
+    "pouchdb": "^5.3.0"
   },
   "devDependencies": {
     "babel": "^6.3.26",
@@ -50,8 +51,8 @@
     "url": "http://github.com/kepennar/proxy-wasted-time-counter.git"
   },
   "scripts": {
-    "serve": "babel-node --eval \"require('./tools/serve').catch(err => console.error(err.stack))\"",
     "start": "babel-node tools/run start",
-    "precache": "babel-node tools/run precache"
+    "precache": "babel-node tools/run precache",
+    "build": "babel-node tools/run build"
   }
 }

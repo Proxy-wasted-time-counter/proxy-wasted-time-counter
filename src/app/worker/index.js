@@ -1,9 +1,12 @@
 import { Worker } from 'multithread-it';
 
 import * as reducers from './reducers';
+import { getInitialState } from './storage';
+
 import { Container as ContainerComponent } from '../components/Container';
 
 const app = new ContainerComponent();
 
-Worker.subscribeAppToChanges(app, reducers);
+getInitialState()
+.then(initState => Worker.subscribeAppToChanges(app, reducers, initState));
 

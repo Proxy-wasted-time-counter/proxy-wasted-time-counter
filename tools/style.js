@@ -9,7 +9,7 @@ import watch from './lib/watch';
 const styleDir = path.join(__dirname, '../src');
 const outDir = path.join(__dirname, '../build');
 
-const includePaths = [path.join(__dirname, '../node_modules/muicss/src/sass')];
+const includePaths = [path.join(__dirname, '../node_modules/bulma')];
 
 export default task('style', async () => {
 

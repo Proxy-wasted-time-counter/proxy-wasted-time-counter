@@ -11,13 +11,30 @@ export class Component extends MultithreadItComponent {
 
   render() {
     return (
-      <form name="addWastedTime" data-submit={COMP_ID} className="mui-form--inline">
-        <legend>Add wasted time</legend>
-        <div className="mui-textfield mui-textfield--float-label">
-          <input name="time" type="number" />
-          <label>How much time you waste?</label>
-        </div>
-        <button type="submit" name="add" className="mui-btn">Save</button>
+      <form name="addWastedTime" data-submit={COMP_ID} >
+        <h3 className="title">Add wasted time</h3>
+        <p className="control">
+          <label className="radio">
+            <input type="radio" name="timeUnit" checked defaultValue="second" />
+            Seconds
+          </label>
+          <label className="radio">
+            <input type="radio" name="timeUnit" defaultValue="minute" />
+            Minutes
+          </label>
+          <label className="radio">
+            <input type="radio" name="timeUnit" defaultValue="hour" />
+            Hours
+          </label>
+          <label className="radio">
+            <input type="radio" name="timeUnit" defaultValue="day" />
+            Days :O
+          </label>
+        </p>
+        <p className="control is-grouped">
+          <input name="time" type="number" className="input" placeholder="How much time you waste?" />
+          <button type="submit" name="add" className="button is-primary">Save</button>
+        </p>
       </form>
     );
   }
@@ -38,8 +55,12 @@ export class EventsHandlers extends MultithreadItEventsHandler {
     if (target['data-submit'] === COMP_ID) {
       e.preventDefault();
       const timeToAdd = target.time.value;
+      const timeUnit = target.timeUnit.value;
       target.time.value = '';
-      this._worker.dispatchEvent(ActionTypes.ADD_WASTED_TIME, {time: timeToAdd, date: new Date()});
+      this._worker.dispatchEvent(
+        ActionTypes.ADD_WASTED_TIME,
+        {time: timeToAdd, unit: timeUnit, date: new Date().getTime()}
+      );
     }
   }
 }

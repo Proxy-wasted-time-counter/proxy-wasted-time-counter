@@ -8,15 +8,16 @@ export default class WastesList extends MultithreadItComponent {
   render(wastes) {
 
     function createLine(waste) {
+      const date = new Date(waste.date);
       return (
         <tr>
-          <td textContent={waste.date.toLocaleDateString()}></td>
+          <td textContent={date.toLocaleDateString()}></td>
           <td textContent={waste.time}></td>
         </tr>
       );
     }
     return (
-      <table className="mui-table mui-table--bordered">
+      <table className="table is-striped">
         <thead>
           <tr>
             <th>Date</th>
