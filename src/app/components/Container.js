@@ -33,8 +33,11 @@ export class Container extends MultithreadItComponent {
       wastes => persistWastes(wastes)
     );
     this.watch(
-      state => state.counter.value,
-      counterValue => this._counterValue = counterValue
+      state => state.counter,
+      counter => {
+        this._counterValue = counter.value;
+        this._counterActive = counter.active;
+      }
     );
   }
 
@@ -55,7 +58,7 @@ export class Container extends MultithreadItComponent {
         <div className="column container">
           <div className="box">
             <p>
-              {this._counter.render(this._counterValue)}
+              {this._counter.render(this._counterActive, this._counterValue)}
             </p>
           </div>
           <div className="box">

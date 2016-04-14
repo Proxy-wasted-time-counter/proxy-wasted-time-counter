@@ -13,13 +13,15 @@ const STOP_ACTION = 'stop';
 
 export class Component extends MultithreadItComponent {
 
-  render(value) {
+  render(active, value) {
+    const button = active ?
+      <button data-click={COMP_ID} counter-action={STOP_ACTION} className="button is-danger is-outlined">Stop</button> :
+      <button data-click={COMP_ID} counter-action={START_ACTION} className="button is-success is-outlined">Start</button>;
     return (
       <div className="container has-text-centered">
         <h3 className="title">Counter</h3>
         <div className="counter-value">{value}</div>
-        <button data-click={COMP_ID} counter-action={START_ACTION} className="button is-success is-outlined">Start</button>
-        <button data-click={COMP_ID} counter-action={STOP_ACTION} className="button is-danger is-outlined">Stop</button>
+        {button}
       </div>
     );
   }

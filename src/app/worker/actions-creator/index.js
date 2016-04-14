@@ -22,8 +22,15 @@ function deleteWaste(idToDelete) {
 }
 
 function incrCount() {
-  return {
-    type: ActionTypes.INCR_COUNT
+  return (dispatch, getState) => {
+    const counterTime = getState().counter.value;
+    dispatch({
+      type: ActionTypes.INCR_COUNT,
+      data: {
+        value: counterTime + 1,
+        active: true
+      }
+    });
   };
 }
 
@@ -42,10 +49,6 @@ function addCounterTime() {
     dispatch({
       type: ActionTypes.RESET_COUNTER
     });
-  };
-
-  return {
-    type: ActionTypes.ADD_COUNTER_TIME
   };
 }
 
