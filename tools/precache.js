@@ -36,4 +36,3 @@ export default async () => {
   console.log('start generating precache');
   await generate();
 };
-

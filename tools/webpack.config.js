@@ -33,7 +33,7 @@ export default {
   entry: {
     app: [
       ...(WATCH ? ['webpack-hot-middleware/client'] : []),
-      './src/app.js',
+      './src/app/index.js',
     ],
   },
   output: {
