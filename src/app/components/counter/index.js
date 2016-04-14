@@ -15,7 +15,7 @@ export class Component extends MultithreadItComponent {
 
   render(value) {
     return (
-      <div>
+      <div className="container has-text-centered">
         <h3 className="title">Counter</h3>
         <div className="counter-value">{value}</div>
         <button data-click={COMP_ID} counter-action={START_ACTION} className="button is-success is-outlined">Start</button>
@@ -56,6 +56,7 @@ export class EventsHandlers extends MultithreadItEventsHandler {
       );
     }, 1000);
   }
+
   _stop() {
     clearTimeout(this._interval);
     this._worker.dispatchEvent(

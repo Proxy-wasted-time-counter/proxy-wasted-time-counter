@@ -3,3 +3,4 @@ export const ADD_WASTED_TIME = 'ADD_WASTED_TIME';
 export const DELETE_WASTE = 'DELETE_WASTE';
 export const INCR_COUNT = 'INCR_COUNT';
 export const ADD_COUNTER_TIME = 'ADD_COUNTER_TIME';
+export const RESET_COUNTER = 'RESET_COUNTER';

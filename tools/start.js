@@ -2,6 +2,7 @@ import browserSync from 'browser-sync';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import proxyMiddleware from 'http-proxy-middleware';
 
 import task from './lib/task';
 import build from './build';
@@ -21,10 +22,11 @@ export default async () => {
 
   browserSync({
     // https: true,
+    middleware: [
+      proxyMiddleware('/couchdb', {target: 'http://localhost/'})
+    ],
     proxy: {
-
-      target: 'localhost:5000/',
-
+      target: 'localhost:5000',
       middleware: [
         webpackDevMiddleware(bundler, {
           // IMPORTANT: dev middleware can't access config, so we should

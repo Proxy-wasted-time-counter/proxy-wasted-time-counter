@@ -7,6 +7,11 @@ export default function counter(state = {value: 0}, action) {
       ...state,
       value: state.value + 1
     };
+  case ActionTypes.RESET_COUNTER:
+    return {
+      ...state,
+      value: 0
+    };
   default:
     return state;
   }
