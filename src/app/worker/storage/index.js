@@ -1,15 +1,16 @@
 import PouchDB from 'pouchdb';
 
 const localDB = new PouchDB('pwtc-state');
-const remoteDB = new PouchDB('http://localhost:5984/myremotedb')
 
-localDB.replicate.sync(remoteDB, {
+const remoteDB = new PouchDB('/couchdb/pwtc-state');
+
+localDB.sync(remoteDB, {
   live: true,
   retry: true
 })
-.on('change', function () {
+.on('change', function() {
   console.log('[STORAGE] : Synchronized with remote DB');
-}).on('error', function (err) {
+}).on('error', function(err) {
   console.error('[STORAGE] : Error Synchronized with remote DB');
 });
 
@@ -20,7 +21,15 @@ export function getInitialState() {
   .then(dbWastes => {
     return {
       wastedTime: {
-        wastes: dbWastes.wastes 
+        wastes: dbWastes.wastes
+      }
+    };
+  })
+  .catch(e => {
+    console.log(e);
+    return {
+      wastedTime: {
+        wastes: []
       }
     };
   });
@@ -31,5 +40,11 @@ export function persistWastes(wastes) {
   .then(dbWastes => {
     dbWastes.wastes = wastes;
     return localDB.put(dbWastes);
+  })
+  .catch(e => {
+    return localDB.put({
+      _id: WASTES_ID,
+      wastes: wastes
+    });
   });
 }

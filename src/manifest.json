@@ -27,5 +27,10 @@
   "display": "standalone",
   "start_url": "index.html?launcher=true",
   "theme_color": "#2196F3",
-  "background_color": "#EEEEEE"
+  "background_color": "#EEEEEE",
+  "permissions": {
+    "desktop-notification": {
+      "description": "Needed for creating system notifications."
+    }
+  }
 }

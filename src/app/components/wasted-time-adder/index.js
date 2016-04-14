@@ -2,6 +2,7 @@ import {
   MultithreadItComponent,
   MultithreadItEventsHandler
 } from 'multithread-it';
+import { v1 as uuid} from 'node-uuid';
 
 import * as ActionTypes from '../../constants/ActionTypes';
 
@@ -59,7 +60,7 @@ export class EventsHandlers extends MultithreadItEventsHandler {
       target.time.value = '';
       this._worker.dispatchEvent(
         ActionTypes.ADD_WASTED_TIME,
-        {time: timeToAdd, unit: timeUnit, date: new Date().getTime()}
+        {id: uuid(), time: timeToAdd, unit: timeUnit, date: new Date().getTime()}
       );
     }
   }
