@@ -21,7 +21,8 @@ export function getInitialState() {
   .then(dbWastes => {
     return {
       wastedTime: {
-        wastes: dbWastes.wastes
+        wastes: dbWastes.wastes,
+        perMonth: dbWastes.perMonth
       }
     };
   })
@@ -29,22 +30,25 @@ export function getInitialState() {
     console.log(e);
     return {
       wastedTime: {
-        wastes: []
+        wastes: [],
+        perMonth: {}
       }
     };
   });
 }
 
-export function persistWastes(wastes) {
+export function persistWastes(wastedTime) {
   localDB.get(WASTES_ID)
   .then(dbWastes => {
-    dbWastes.wastes = wastes;
+    dbWastes.wastes = wastedTime.wastes;
+    dbWastes.perMonth = wastedTime.perMonth;
     return localDB.put(dbWastes);
   })
   .catch(e => {
     return localDB.put({
       _id: WASTES_ID,
-      wastes: wastes
+      wastes: wastedTime.wastes,
+      perMonth: wastedTime.perMonth
     });
   });
 }

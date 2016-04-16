@@ -27,8 +27,8 @@ export class Component extends MultithreadItComponent {
       wastes => this._wastes = wastes
     );
     this.watch(
-      state => state.wastedTime.wastes,
-      wastes => persistWastes(wastes)
+      state => state.wastedTime,
+      wastedTime => persistWastes(wastedTime)
     );
     this.watch(
       state => state.counter,
@@ -62,7 +62,7 @@ export class Component extends MultithreadItComponent {
   }
 }
 
-export class EventsHandlers extends MultithreadItEventsHandler {
+export class EventsHandler extends MultithreadItEventsHandler {
   constructor(workerStore) {
     super(workerStore);
 

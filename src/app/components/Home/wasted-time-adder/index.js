@@ -15,19 +15,19 @@ export class Component extends MultithreadItComponent {
         <h3 className="title">Add wasted time</h3>
         <p className="control">
           <label className="radio">
-            <input type="radio" name="timeUnit" checked defaultValue="second" />
+            <input type="radio" name="timeUnit" checked defaultValue="seconds" />
             Seconds
           </label>
           <label className="radio">
-            <input type="radio" name="timeUnit" defaultValue="minute" />
+            <input type="radio" name="timeUnit" defaultValue="minutes" />
             Minutes
           </label>
           <label className="radio">
-            <input type="radio" name="timeUnit" defaultValue="hour" />
+            <input type="radio" name="timeUnit" defaultValue="hours" />
             Hours
           </label>
           <label className="radio">
-            <input type="radio" name="timeUnit" defaultValue="day" />
+            <input type="radio" name="timeUnit" defaultValue="days" />
             Days :O
           </label>
         </p>

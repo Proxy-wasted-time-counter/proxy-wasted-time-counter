@@ -24,6 +24,7 @@ export class Container extends MultithreadItComponent {
   }
 
   onInit() {
+    this._router.setStore(this._store);
     this.watch(
       state => state.route.current,
       currentRoute => this._routeId = currentRoute
@@ -55,9 +56,13 @@ export class EventsHandlers extends MultithreadItEventsHandler {
     super(workerStore);
 
     this._routerEvents = new Router.EventsHandler(this._worker);
+    this._homeEvents = new Home.EventsHandler(this._worker);
+    this._reportEvents = new Report.EventsHandler(this._worker);
   }
 
   register(eventsMap) {
     this._routerEvents.register(eventsMap);
+    this._homeEvents.register(eventsMap);
+    this._reportEvents.register(eventsMap);
   }
 }

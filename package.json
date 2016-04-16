@@ -7,7 +7,8 @@
     "bluebird": "^3.1.1",
     "bulma": "0.0.18",
     "classnames": "^2.2.3",
-    "multithread-it": "0.0.7",
+    "moment": "^2.12.0",
+    "multithread-it": "0.0.8",
     "node-uuid": "^1.4.7",
     "pouchdb": "^5.3.1"
   },

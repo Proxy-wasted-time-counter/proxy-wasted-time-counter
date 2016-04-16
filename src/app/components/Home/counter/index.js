@@ -62,8 +62,7 @@ export class EventsHandlers extends MultithreadItEventsHandler {
   _stop() {
     clearTimeout(this._interval);
     this._worker.dispatchEvent(
-      ActionTypes.ADD_COUNTER_TIME,
-      {id: uuid(), unit: 'second', date: new Date().getTime()}
+      ActionTypes.ADD_COUNTER_TIME
     );
   }
 }

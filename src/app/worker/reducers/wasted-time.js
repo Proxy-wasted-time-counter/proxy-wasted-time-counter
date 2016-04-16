@@ -1,6 +1,6 @@
 import * as ActionTypes from '../../constants/ActionTypes';
 
-export default function wastedTime(state = {wastes: []}, action) {
+export default function wastedTime(state = {wastes: [], perMonth: {}}, action) {
   switch (action.type) {
   case ActionTypes.ADD_WASTED_TIME:
     return {
@@ -16,7 +16,13 @@ export default function wastedTime(state = {wastes: []}, action) {
   case ActionTypes.DELETE_WASTE:
     return {
       ...state,
-      wastes: state.wastes.filter(w=> w.id !== action.data)
+      wastes: state.wastes.filter(w => w.id !== action.data)
+    };
+  case ActionTypes.SET_MONTH_AGGREGATE:
+    const wastePerMonth = {total: action.data.total, humanizedTotal: action.data.humanizedTotal};
+    return {
+      ...state,
+      perMonth: {...state.perMonth, [action.data.month]: wastePerMonth}
     };
   default:
     return state;
