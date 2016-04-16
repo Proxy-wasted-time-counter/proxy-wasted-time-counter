@@ -1,6 +1,14 @@
 import { v1 as uuid} from 'node-uuid';
+import { Router } from 'multithread-it';
 
 import * as ActionTypes from '../../constants/ActionTypes';
+
+function changeRoute(route) {
+  return {
+    type: Router.CHANGE_ROUTE,
+    data: route
+  };
+}
 
 function addWastedTime({time, unit}) {
   return {
@@ -53,6 +61,7 @@ function addCounterTime() {
 }
 
 export default {
+  [Router.CHANGE_ROUTE]: changeRoute,
   [ActionTypes.ADD_WASTED_TIME]: addWastedTime,
   [ActionTypes.DELETE_WASTE]: deleteWaste,
   [ActionTypes.INCR_COUNT]: incrCount,

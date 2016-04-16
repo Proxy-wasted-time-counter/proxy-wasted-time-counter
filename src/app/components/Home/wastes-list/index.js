@@ -2,7 +2,7 @@ import {
   MultithreadItComponent,
   MultithreadItEventsHandler
 } from 'multithread-it';
-import * as ActionTypes from '../../constants/ActionTypes';
+import * as ActionTypes from '../../../constants/ActionTypes';
 
 const COMP_ID = 'WASTES_LIST';
 

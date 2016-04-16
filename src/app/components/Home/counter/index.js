@@ -4,7 +4,7 @@ import {
 } from 'multithread-it';
 import { v1 as uuid} from 'node-uuid';
 
-import * as ActionTypes from '../../constants/ActionTypes';
+import * as ActionTypes from '../../../constants/ActionTypes';
 
 const COMP_ID = 'COUNTER';
 
