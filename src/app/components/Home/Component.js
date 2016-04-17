@@ -1,23 +1,20 @@
-import {
-  MultithreadItComponent,
-  MultithreadItEventsHandler
-} from 'multithread-it';
+import { MultithreadItComponent } from 'multithread-it';
 
 import { persistWastes } from '../../worker/storage';
 
-import * as WastedTimeAdder from './wasted-time-adder';
-import * as WastesList from './wastes-list';
-import * as Counter from './counter';
+import { Component as WastedTimeAdder } from './wasted-time-adder';
+import { Component as WastesList } from './wastes-list';
+import { Component as Counter } from './counter';
 
-export class Component extends MultithreadItComponent {
+export default class Component extends MultithreadItComponent {
   _wastes = [];
 
   constructor() {
     super();
 
-    this._counter = new Counter.Component();
-    this._wastedTimeAdder = new WastedTimeAdder.Component();
-    this._wastesList = new WastesList.Component();
+    this._counter = new Counter();
+    this._wastedTimeAdder = new WastedTimeAdder();
+    this._wastesList = new WastesList();
 
   }
 
@@ -59,21 +56,5 @@ export class Component extends MultithreadItComponent {
         </div>
       </div>
     );
-  }
-}
-
-export class EventsHandler extends MultithreadItEventsHandler {
-  constructor(workerStore) {
-    super(workerStore);
-
-    this._wastesAdderEvents = new WastedTimeAdder.EventsHandlers(this._worker);
-    this._wastesListEvents = new WastesList.EventsHandlers(this._worker);
-    this._counterEvents = new Counter.EventsHandlers(this._worker);
-  }
-
-  register(eventsMap) {
-    this._counterEvents.register(eventsMap);
-    this._wastesAdderEvents.register(eventsMap);
-    this._wastesListEvents.register(eventsMap);
   }
 }

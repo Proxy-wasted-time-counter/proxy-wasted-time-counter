@@ -5,7 +5,7 @@ import actionsCreator from './actions-creator';
 
 import { getInitialState } from './storage';
 
-import { Container as ContainerComponent } from '../components/Container';
+import ContainerComponent from '../components/ContainerComponent';
 
 const app = new ContainerComponent();
 

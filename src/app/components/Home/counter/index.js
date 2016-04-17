@@ -2,7 +2,6 @@ import {
   MultithreadItComponent,
   MultithreadItEventsHandler
 } from 'multithread-it';
-import { v1 as uuid} from 'node-uuid';
 
 import * as ActionTypes from '../../../constants/ActionTypes';
 

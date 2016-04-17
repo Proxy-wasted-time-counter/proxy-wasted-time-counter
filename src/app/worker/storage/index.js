@@ -1,23 +1,31 @@
 import PouchDB from 'pouchdb';
+import PouchDBUpsert from 'pouchdb-upsert';
+
+PouchDB.plugin(PouchDBUpsert);
 
 const localDB = new PouchDB('pwtc-state');
+const remoteDB = new PouchDB('http://localhost:3000/couchdb/pwtc-state');
 
-const remoteDB = new PouchDB('/couchdb/pwtc-state');
-
+const syncDone = Promise.defer();
 localDB.sync(remoteDB, {
   live: true,
   retry: true
 })
-.on('change', function() {
+.on('complete', info => {
+  console.log('Replication completed', info);
+  syncDone.resolve();
+})
+.on('change', () => {
   console.log('[STORAGE] : Synchronized with remote DB');
-}).on('error', function(err) {
+}).on('error', err => {
   console.error('[STORAGE] : Error Synchronized with remote DB');
 });
 
 const WASTES_ID = 'wastes';
 
 export function getInitialState() {
-  return localDB.get(WASTES_ID)
+  return syncDone.promise
+  .then(() => localDB.get(WASTES_ID))
   .then(dbWastes => {
     return {
       wastedTime: {
@@ -38,17 +46,18 @@ export function getInitialState() {
 }
 
 export function persistWastes(wastedTime) {
-  localDB.get(WASTES_ID)
-  .then(dbWastes => {
-    dbWastes.wastes = wastedTime.wastes;
-    dbWastes.perMonth = wastedTime.perMonth;
-    return localDB.put(dbWastes);
-  })
-  .catch(e => {
-    return localDB.put({
-      _id: WASTES_ID,
+  localDB.upsert(WASTES_ID, dbWastes => {
+    return {
+      ...dbWastes,
       wastes: wastedTime.wastes,
       perMonth: wastedTime.perMonth
-    });
-  });
+    };
+  })
+  // .catch(e => {
+  //   return localDB.put({
+  //     _id: WASTES_ID,
+  //     wastes: wastedTime.wastes,
+  //     perMonth: wastedTime.perMonth
+  //   });
+  // });
 }

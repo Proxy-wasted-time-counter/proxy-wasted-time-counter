@@ -1,4 +1,4 @@
-import { v1 as uuid} from 'node-uuid';
+import { v1 as uuid} from 'uuid';
 import { Router } from 'multithread-it';
 import moment from 'moment';
 

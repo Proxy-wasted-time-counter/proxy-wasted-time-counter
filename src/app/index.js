@@ -1,7 +1,7 @@
 import { App } from 'multithread-it';
 import './service-worker-registration';
 
-import { EventsHandlers as ContainerEventsHandlers } from './components/Container';
+import ContainerEventsHandlers from './components/ContainerEventsHandler';
 import AppWorker from 'worker!./worker';
 import './connection-listener';
 

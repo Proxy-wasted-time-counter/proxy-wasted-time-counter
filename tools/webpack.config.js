@@ -31,7 +31,7 @@ SASS_INCLUDES_PATHS.push(require('node-neat').includePaths);
 
 export default {
   entry: {
-    app: [
+    index: [
       ...(WATCH ? ['webpack-hot-middleware/client'] : []),
       './src/app/index.js',
     ],
@@ -59,7 +59,7 @@ export default {
   },
   devtool: DEBUG ? 'source-map' : false,
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin(GLOBALS),
     ...(!DEBUG ? [
       new webpack.optimize.DedupePlugin(),
