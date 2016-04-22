@@ -4,7 +4,7 @@ import PouchDBUpsert from 'pouchdb-upsert';
 PouchDB.plugin(PouchDBUpsert);
 
 const localDB = new PouchDB('pwtc-state');
-const remoteDB = new PouchDB('http://localhost:3000/couchdb/pwtc-state');
+const remoteDB = new PouchDB('https://pennarun-demo.io/couchdb/pwtc-state');
 
 const syncDone = remoteDB.replicate.to(localDB);
 localDB.sync(remoteDB, {
