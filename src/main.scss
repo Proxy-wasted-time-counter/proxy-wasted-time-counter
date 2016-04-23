@@ -1,23 +1,7 @@
-@import 'bulma/utilities/utilities';
-@import 'bulma/config/variables';
+$turquoise: #2196F3;
+$grey-lighter: #e7eef9;
 
-// Override variables here
-// You can add new ones or update existing ones:
-
-
-@import 'bulma/config/generated-variables';
-
-
-// Override generated variables here
-// For example, by default, the $danger color is $red and the font is sans-serif
-// You can change these values:
-
-@import 'bulma/base/base';
-@import 'bulma/elements/elements';
-@import 'bulma/components/components';
-@import 'bulma/layout/layout';
-
-$default-background-color: #fff;
+@import "bulma";
 
 .counter-value {
   font-size: 4rem;

@@ -19,8 +19,8 @@ export default class Header extends MultithreadItComponent {
       <header className="header">
         <div className="container">
           <div className="header-left">
-            <a href="#" data-click={Router.CHANGE_ROUTE} data-link="home" className="header-item">
-              <img src="img/icon-48.png" alt="Logo" />
+            <a href="#" className="header-item">
+              <img  data-click={Router.CHANGE_ROUTE} data-link="home" src="img/icon-48.png" alt="Logo" />
             </a>
             <a href="#" data-click={Router.CHANGE_ROUTE} data-link="home" className={homeMenuClasses}>
               PWTC
@@ -30,7 +30,7 @@ export default class Header extends MultithreadItComponent {
             </a>
           </div>
           <div className="header-right header-menu">
-            <span className="header-item">
+            <span data-click={Router.CHANGE_ROUTE} data-link="home" className="header-item">
               <a href="#">Poxy-Wasted-Time-Counter</a>
             </span>
           </div>

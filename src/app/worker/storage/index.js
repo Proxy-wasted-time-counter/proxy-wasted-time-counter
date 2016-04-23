@@ -1,32 +1,39 @@
 import PouchDB from 'pouchdb';
 import PouchDBUpsert from 'pouchdb-upsert';
 
+import * as ActionTypes from '../../constants/ActionTypes';
+import actionsCreator from '../actions-creator';
+
 PouchDB.plugin(PouchDBUpsert);
 
 const localDB = new PouchDB('pwtc-state');
-const remoteDB = new PouchDB('https://pennarun-demo.io/couchdb/pwtc-state');
+const remoteDB = new PouchDB('http://localhost:3000/couchdb/pwtc-state');
 
-const syncDone = remoteDB.replicate.to(localDB);
-localDB.sync(remoteDB, {
-  live: true,
-  retry: true
-})
-.on('change', () => {
-  console.log('[STORAGE] : Synchronized with remote DB');
-})
-.on('complete', info => {
-  console.log('Replication completed', info);
-  syncDone.resolve();
-})
-.on('error', err => {
-  console.error('[STORAGE] : Error Synchronized with remote DB');
-});
+export function init(store) {
+  remoteDB.replicate.to(localDB);
+  localDB.sync(remoteDB, {
+    live: true,
+    retry: true
+  })
+  .on('change', updatedWatedTime)
+  .on('complete', updatedWatedTime)
+  .on('error', err => {
+    console.error('[STORAGE] : Error Synchronized with remote DB');
+  });
+  function updatedWatedTime() {
+    getPouchDbState()
+    .then(data => {
+      store.dispatch(
+        actionsCreator[ActionTypes.UPDATE_WASTED_TIME](data.wastedTime)
+      );
+    });
+  }
+}
 
 const WASTES_ID = 'wastes';
 
-export function getInitialState() {
-  return syncDone
-  .then(() => localDB.get(WASTES_ID))
+export function getPouchDbState() {
+  return localDB.get(WASTES_ID)
   .then(dbWastes => {
     return {
       wastedTime: {
@@ -53,12 +60,5 @@ export function persistWastes(wastedTime) {
       wastes: wastedTime.wastes,
       perMonth: wastedTime.perMonth
     };
-  })
-  // .catch(e => {
-  //   return localDB.put({
-  //     _id: WASTES_ID,
-  //     wastes: wastedTime.wastes,
-  //     perMonth: wastedTime.perMonth
-  //   });
-  // });
+  });
 }

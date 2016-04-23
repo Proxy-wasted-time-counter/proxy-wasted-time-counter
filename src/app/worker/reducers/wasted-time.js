@@ -7,6 +7,12 @@ export default function wastedTime(state = {wastes: [], perMonth: {}}, action) {
       ...state,
       wastes: [...state.wastes, action.data]
     };
+  case ActionTypes.UPDATE_WASTED_TIME:
+    return {
+      ...state,
+      wastes: action.data.wastes,
+      perMonth: action.data.perMonth
+    };
   case ActionTypes.ADD_COUNTER_TIME:
     const newWaste = {...action.data, time: 12};
     return {

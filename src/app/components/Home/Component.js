@@ -1,7 +1,5 @@
 import { MultithreadItComponent } from 'multithread-it';
 
-import { persistWastes } from '../../worker/storage';
-
 import { Component as WastedTimeAdder } from './wasted-time-adder';
 import { Component as WastesList } from './wastes-list';
 import { Component as Counter } from './counter';
@@ -22,10 +20,6 @@ export default class Component extends MultithreadItComponent {
     this.watch(
       state => state.wastedTime.wastes,
       wastes => this._wastes = wastes
-    );
-    this.watch(
-      state => state.wastedTime,
-      wastedTime => persistWastes(wastedTime)
     );
     this.watch(
       state => state.counter,

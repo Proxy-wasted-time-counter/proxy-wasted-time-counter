@@ -3,6 +3,7 @@ import { Router } from 'multithread-it';
 import moment from 'moment';
 
 import * as ActionTypes from '../../constants/ActionTypes';
+import { persistWastes } from'../storage';
 
 function changeRoute(route) {
   return {
@@ -11,8 +12,17 @@ function changeRoute(route) {
   };
 }
 
-function addWastedTime({time, unit}) {
+function updateWastedTime(wastedTime) {
   return (dispatch) => {
+    dispatch({
+      type: ActionTypes.UPDATE_WASTED_TIME,
+      data: wastedTime
+    });
+  };
+}
+
+function addWastedTime({time, unit}) {
+  return (dispatch, getState) => {
     dispatch({
       type: ActionTypes.ADD_WASTED_TIME,
       data: {
@@ -23,6 +33,8 @@ function addWastedTime({time, unit}) {
       }
     });
     dispatch(aggregateMonthWastes());
+
+    persistWastes(getState().wastedTime);
   };
 }
 
@@ -33,6 +45,8 @@ function deleteWaste(idToDelete) {
       data: idToDelete
     });
     dispatch(aggregateMonthWastes());
+
+    persistWastes(getState().wastedTime);
   };
 }
 
@@ -96,6 +110,7 @@ function aggregateMonthWastes() {
 }
 
 export default {
+  [ActionTypes.UPDATE_WASTED_TIME]: updateWastedTime,
   [Router.CHANGE_ROUTE]: changeRoute,
   [ActionTypes.ADD_WASTED_TIME]: addWastedTime,
   [ActionTypes.DELETE_WASTE]: deleteWaste,

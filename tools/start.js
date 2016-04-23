@@ -23,7 +23,7 @@ async function start() {
   browserSync({
     // https: true,
     middleware: [
-      proxyMiddleware('/couchdb', {target: 'http://localhost/'})
+      proxyMiddleware('/couchdb', {target: 'https://pennarun-demo.io', changeOrigin: true})
     ],
     proxy: {
       target: 'localhost:5000',

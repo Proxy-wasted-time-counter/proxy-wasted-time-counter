@@ -5,11 +5,11 @@
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "bluebird": "^3.1.1",
-    "bulma": "0.0.18",
+    "bulma": "0.0.24",
     "classnames": "^2.2.3",
     "moment": "^2.12.0",
-    "multithread-it": "0.0.8",
-    "pouchdb": "^5.3.1",
+    "multithread-it": "0.0.9",
+    "pouchdb": "^5.3.2",
     "pouchdb-upsert": "^2.0.0",
     "uuid": "^2.0.2"
   },
@@ -39,7 +39,7 @@
     "lodash.merge": "^3.3.2",
     "ncp": "^2.0.0",
     "node-neat": "^1.7.2",
-    "node-sass": "^3.4.2",
+    "node-sass": "3.4.2",
     "react-jsx": "^1.0.0",
     "replace": "^0.3.0",
     "sass-loader": "^3.1.2",
