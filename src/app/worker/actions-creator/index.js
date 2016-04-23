@@ -79,6 +79,8 @@ function addCounterTime() {
       type: ActionTypes.RESET_COUNTER
     });
     dispatch(aggregateMonthWastes());
+
+    persistWastes(getState().wastedTime);
   };
 }
 
