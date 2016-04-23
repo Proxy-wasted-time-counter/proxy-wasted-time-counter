@@ -39,7 +39,7 @@ function addWastedTime({time, unit}) {
 }
 
 function deleteWaste(idToDelete) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch({
       type: ActionTypes.DELETE_WASTE,
       data: idToDelete
