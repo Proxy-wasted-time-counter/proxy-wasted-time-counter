@@ -7,7 +7,7 @@ import actionsCreator from '../actions-creator';
 PouchDB.plugin(PouchDBUpsert);
 
 const localDB = new PouchDB('pwtc-state');
-const remoteDB = new PouchDB('http://localhost:3000/couchdb/pwtc-state');
+const remoteDB = new PouchDB('https://pennarun-demo.io/couchdb/pwtc-state');
 
 export function init(store) {
   remoteDB.replicate.to(localDB);
