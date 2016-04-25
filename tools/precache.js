@@ -24,6 +24,7 @@ const generate = () => new Promise((resolve, reject) => {
       path.join(buildDir, 'img/**.*'),
       path.join(buildDir, '**.js')
     ],
+    ignoreUrlParametersMatching: [/./],
     stripPrefix: buildDir,
     cacheId: packageJson.name,
     logger: console.log,
