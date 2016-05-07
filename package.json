@@ -8,9 +8,10 @@
     "bulma": "0.0.24",
     "classnames": "^2.2.3",
     "moment": "^2.12.0",
-    "multithread-it": "0.0.9",
+    "multithread-it": "0.1.0",
     "pouchdb": "^5.3.2",
     "pouchdb-upsert": "^2.0.0",
+    "scss-spinner": "0.0.2",
     "uuid": "^2.0.2"
   },
   "devDependencies": {
@@ -37,6 +38,7 @@
     "http-proxy-middleware": "^0.13.0",
     "json-loader": "^0.5.4",
     "lodash.merge": "^3.3.2",
+    "mathsass": "^0.9.5",
     "ncp": "^2.0.0",
     "node-neat": "^1.7.2",
     "node-sass": "3.4.2",
