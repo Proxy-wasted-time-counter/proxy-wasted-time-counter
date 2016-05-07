@@ -5,7 +5,7 @@ export default function wastedTime(state = {wastes: [], perMonth: {}}, action) {
   case ActionTypes.ADD_WASTED_TIME:
     return {
       ...state,
-      wastes: [...state.wastes, action.data]
+      wastes: [action.data, ...state.wastes]
     };
   case ActionTypes.UPDATE_WASTED_TIME:
     return {
@@ -32,5 +32,5 @@ export default function wastedTime(state = {wastes: [], perMonth: {}}, action) {
     };
   default:
     return state;
-  }
+  };
 }
