@@ -3,6 +3,14 @@ $grey-lighter: #e7eef9;
 
 @import "bulma";
 
+$spinner-point-color: $turquoise;
+$spinner-alternative-color: $grey-lighter;
+
+@import "spinner";
+
+.spin-rotate {
+  margin: 20px auto;
+}
 .counter-value {
   font-size: 4rem;
   margin: 1rem;

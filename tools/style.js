@@ -9,7 +9,11 @@ import watch from './lib/watch';
 const styleDir = path.join(__dirname, '../src');
 const outDir = path.join(__dirname, '../build');
 
-const includePaths = [path.join(__dirname, '../node_modules/bulma')];
+const includePaths = [
+  path.join(__dirname, '../node_modules/bulma'),
+  path.join(__dirname, '../node_modules/mathsass/dist'),
+  path.join(__dirname, '../node_modules/scss-spinner/src')
+];
 
 export default task('style', async () => {
 
@@ -50,4 +54,3 @@ function renderSass(stylePath) {
     });
   });
 }
-
