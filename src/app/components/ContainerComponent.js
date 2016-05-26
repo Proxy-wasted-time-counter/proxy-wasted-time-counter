@@ -31,13 +31,15 @@ export default class Container extends MultithreadItComponent {
   render() {
     return (
       <app>
-        {this._header.render(this._routeId)}
-        <div className="box">
-          <div className="hero">
-            <div className="hero-content">
-              <div className="container">
-                <h1 className="title">PWTC</h1>
-                <h2 className="subtitle">A Progressive app POC</h2>
+        <div className="hero">
+          {this._header.render(this._routeId)}
+          <div className="box">
+            <div className="hero">
+              <div className="hero-content">
+                <div className="container">
+                  <h1 className="title">PWTC</h1>
+                  <h2 className="subtitle">A Progressive app POC</h2>
+                </div>
               </div>
             </div>
           </div>

@@ -1,3 +1,7 @@
+import 'pseudo-worker/polyfill';
+
+import './toast-notification';
+
 import { App } from 'multithread-it';
 import './service-worker-registration';
 

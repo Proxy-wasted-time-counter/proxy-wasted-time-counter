@@ -3,6 +3,7 @@ $grey-lighter: #e7eef9;
 
 @import "bulma";
 
+$spinner-nb-point: 10;
 $spinner-point-color: $turquoise;
 $spinner-alternative-color: $grey-lighter;
 
@@ -14,4 +15,8 @@ $spinner-alternative-color: $grey-lighter;
 .counter-value {
   font-size: 4rem;
   margin: 1rem;
+}
+
+.is-hidden {
+  display: none !important;
 }

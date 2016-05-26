@@ -18,7 +18,7 @@ export function init(store) {
   .on('change', updatedWatedTime)
   .on('complete', updatedWatedTime)
   .on('error', err => {
-    console.error('[STORAGE] : Error Synchronized with remote DB');
+    console.error('[STORAGE] : Error Synchronizing with remote DB');
   });
   function updatedWatedTime() {
     getPouchDbState()

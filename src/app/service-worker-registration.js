@@ -16,10 +16,12 @@ if ('serviceWorker' in navigator) {
               // It's the perfect time to display a "New content is available; please refresh."
               // message in the page's interface.
               console.log('New or updated content is available.');
+              document.dispatchEvent(new CustomEvent('sw-message', {'detail': 'New or updated content is available. Please refresh'}));
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a "Content is cached for offline use." message.
               console.log('Content is now available offline!');
+              document.dispatchEvent(new CustomEvent('sw-message', {'detail': 'Content is now available offline!'}));
             }
             break;
 

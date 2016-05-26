@@ -18,39 +18,14 @@ const bundler = webpack(webpackConfig);
  */
 async function start() {
   await build();
-  await serve();
+  // await serve();
 
   browserSync({
+    server: './build',
     // https: true,
     middleware: [
       proxyMiddleware('/couchdb', {target: 'https://pennarun-demo.io', changeOrigin: true})
-    ],
-    proxy: {
-      target: 'localhost:5000',
-      middleware: [
-        webpackDevMiddleware(bundler, {
-          // IMPORTANT: dev middleware can't access config, so we should
-          // provide publicPath by ourselves
-          publicPath: webpackConfig.output.publicPath,
-
-          // Pretty colored output
-          stats: webpackConfig.stats,
-
-          // For other settings see
-          // http://webpack.github.io/docs/webpack-dev-middleware.html
-        }),
-
-        // bundler should be the same as above
-        webpackHotMiddleware(bundler),
-      ],
-    },
-
-    // no need to watch '*.js' here, webpack will take care of it for us,
-    // including full page reloads if HMR won't work
-    files: [
-      'build/**/*.css',
-      'build/**/*.html',
-    ],
+    ]
   });
 }
 
